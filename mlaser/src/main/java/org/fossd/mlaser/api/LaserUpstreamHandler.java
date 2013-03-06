@@ -1,5 +1,6 @@
 package org.fossd.mlaser.api;
 
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -60,7 +61,8 @@ public class LaserUpstreamHandler extends SimpleChannelUpstreamHandler {
 
 		ChannelBuffer content = request.getContent();
 		if (content.readable()) {
-			String param = content.toString("UTF-8");
+			String param = content.toString(Charset.forName("UTF-8"));
+			System.out.println("====param:" + param);
 			QueryStringDecoder queryStringDecoder2 = new QueryStringDecoder("/?" + param);
 			Map<String, List<String>> params2 = queryStringDecoder2.getParameters();
 			if (!params2.isEmpty()) {

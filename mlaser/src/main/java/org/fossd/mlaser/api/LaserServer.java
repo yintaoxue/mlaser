@@ -15,7 +15,8 @@ public class LaserServer {
 	}
 
 	public void run() {
-		ChannelFactory factory = new NioServerSocketChannelFactory(Executors.newCachedThreadPool(), Executors.newCachedThreadPool());
+		ChannelFactory factory = new NioServerSocketChannelFactory(Executors.newCachedThreadPool(),
+				Executors.newCachedThreadPool());
 		ServerBootstrap bootstrap = new ServerBootstrap(factory);
 
 		bootstrap.setPipelineFactory(new LaserChannelPipelineFactory());
